@@ -1,24 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import Usingdidmount from './atom';
+//import Toggle from './event';
+import React,{ useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  const [count, setCount] = useState(0)
+  const [theme, setTheme] = useState('');
+
+  function decrementCount(){
+    setCount(prevCount => prevCount -1)
+    setTheme('Berkurang Menjadi ')
+  }
+
+  function incrementCount(){
+    setCount(prevCount => prevCount +1)
+    setTheme('Bertambah Menjadi ')
+  }
+
+  return(
+  <div>
+   <Usingdidmount></Usingdidmount>
+    <div class="container">
+      <button class="btn btn-primary" onClick={ decrementCount }>-</button>
+                <span>{theme}</span>
+                <span>{count}</span> 
+      <button class="btn btn-warning" onClick={ incrementCount }>+</button>
     </div>
+  </div>
   );
 }
 
